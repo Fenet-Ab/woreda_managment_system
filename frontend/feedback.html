@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/feedback.css" />
+  </head>
+  <body>
+    <header class="d-flex align-items-center bg-turquoise p-3">
+      <a href="./Home.html">
+        <img
+          src="./assets/image/Logo.png"
+          alt="Logo"
+          class="img-fluid"
+          style="max-width: 80px"
+        />
+      </a>
+      <nav class="ml-auto">
+        <ul class="d-flex list-unstyled">
+          <li class="mx-3"><a href="./index.html" class="nav-link">HOME</a></li>
+          <li class="mx-3">
+            <a href="./about.html" class="nav-link">ABOUT US</a>
+          </li>
+          <li class="mx-3">
+            <a href="./index.html" class="nav-link">ROUTE</a>
+          </li>
+          <li class="mx-3">
+            <a href="./contact.html" class="nav-link">CONTACT</a>
+          </li>
+          <li class="mx-3">
+            <a href="./signup.html" class="nav-link">SIGN UP</a>
+          </li>
+          <li class="mx-3">
+            <a href="./signin.html" class="nav-link">SIGN IN</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container mt-5">
+      <div class="text-center mb-4">
+        <h1>Feedback</h1>
+        <p class="lead">
+          We value your feedback. Please share your thoughts and suggestions
+          with us.
+        </p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                class="form-control"
+                id="message"
+                rows="5"
+                placeholder="Write your feedback here"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+              Submit Feedback
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ID</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/id.css" />
+  </head>
+  <body>
+    <div class="container form-container">
+      <h1 class="form-title">Kebele ID Application</h1>
+      <div class="form-description">
+        <p>
+          Please select your application type and complete the form with
+          accurate details. Ensure that all required fields are filled before
+          submission. For reapplications, provide your previously registered
+          information for verification.
+        </p>
+      </div>
+
+      <form id="idApplicationForm">
+        <!-- Application Type -->
+        <div class="mb-3">
+          <label for="applicationType" class="form-label"
+            >Application Type</label
+          >
+          <select class="form-select" id="applicationType" required>
+            <option value="" selected disabled>Select an option</option>
+            <option value="new">New Application</option>
+            <option value="reapply">Reapply</option>
+          </select>
+        </div>
+
+        <!-- Personal Information -->
+        <div id="applicationForm" style="display: none">
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fullName"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" id="gender" required>
+              <option value="" selected disabled>Select your gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter your email address"
+              required
+            />
+          </div>
+
+          <!-- Address Information -->
+          <div class="mb-3">
+            <label for="address" class="form-label">Residential Address</label>
+            <textarea
+              class="form-control"
+              id="address"
+              rows="3"
+              placeholder="Enter your address"
+              required
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="kebele" class="form-label">Kebele</label>
+            <input
+              type="text"
+              class="form-control"
+              id="kebele"
+              placeholder="Enter your kebele"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="wereda" class="form-label">Wereda</label>
+            <input
+              type="text"
+              class="form-control"
+              id="wereda"
+              placeholder="Enter your wereda"
+              required
+            />
+          </div>
+
+          <!-- Buttons -->
+          <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary btn-sm">
+              Submit Application
+            </button>
+            <a href="index.html" class="btn btn-secondary btn-sm">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="./js/id.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+  </body>
+</html>
