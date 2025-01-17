@@ -3,23 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Bus Booking</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/index css/style.css" />
+    <!-- <link rel="stylesheet" href="./css/booking.css" /> -->
+    <link rel="stylesheet" href="./css/index css/header-footer.css" />
   </head>
   <body>
     <header class="d-flex align-items-center bg-turquoise p-3">
-      <a href="./Home.html">
-        <img
+      <a href="./Home.html"
+        ><img
           src="./assets/image/Logo.png"
           alt="Logo"
           class="img-fluid"
           style="max-width: 80px"
-        />
-      </a>
+      /></a>
       <nav class="ml-auto">
         <ul class="d-flex list-unstyled">
-          <li class="mx-3"><a href="./index.html" class="nav-link">HOME</a></li>
+          <li class="mx-3"><a href="./Home.html" class="nav-link">HOME</a></li>
           <li class="mx-3">
             <a href="./about.html" class="nav-link">ABOUT US</a>
           </li>
@@ -35,26 +36,231 @@
           <li class="mx-3">
             <a href="./signin.html" class="nav-link">SIGN IN</a>
           </li>
+          <li class="mx-3" id="profileMenu" style="display: none">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="profileDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span id="profiileInitial"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+              <li>
+                <a class="dropdown-item" href="./profile.html">View Profile</a>
+              </li>
+              <li><a class="dropdown-item" href="#" id="logout">Logout</a></li>
+            </ul>
+          </li>
+          <div>
+            <li class="mx-3" id="adminMenu" style="display: none">
+              <a href="./admin.html" class="nav-link">ADMIN</a>
+            </li>
+          </div>
         </ul>
       </nav>
     </header>
 
-    <div class="container mt-5">
-      <h2>Sign In</h2>
-      <form id="signinForm">
+    <div id="cardContainer" class="row">
+      <!-- The cards will be dynamically populated here -->
+    </div>
+
+    <!-- The detailed card (Initially hidden) -->
+    <div class="container my-5" id="thirdCard" style="display: none">
+      <div class="card-custom p-4 border shadow">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="d-flex align-items-center">
+            <img
+              src="./assets/image/Logo.png"
+              alt="Bus Logo"
+              class="rounded-circle me-3"
+            />
+          </div>
+          <div>
+            <span id="priceText" class="price">Price: </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Departure -->
+          <div class="col-6 text-center">
+            <h5 id="departureCity" class="m-0"></h5>
+            <h5 id="destinationCity" class="m-0"></h5>
+            <p id="time" class="m-0"></p>
+          </div>
+          <!-- Travel Duration -->
+          <div
+            class="col-2 text-center d-flex align-items-center justify-content-center"
+          >
+            <span>
+              <span
+                ><img src="./assets/image/arrow.png" alt="arrow" class="arrow"
+              /></span>
+            </span>
+          </div>
+
+          <div class="col-4 text-center">
+            <h5 id="arrivalCity" class="m-0"></h5>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="text-center">
+          <button class="btn btn-book btn-primary" id="bookTicketButton">
+            BOOK TICmainKET
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Form (Initially hidden) -->
+    <div class="container mt-5" id="bookingForm" style="display: none">
+      <h2 class="text-center mb-4">Bus Booking Form</h2>
+      <form id="bookingFormElement" class="p-4 border rounded shadow">
         <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" required />
+          <label for="firstName" class="form-label">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder="First name"
+            required
+          />
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" required />
+          <label for="middleName" class="form-label">Middle Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="middleName"
+            placeholder="Middle name"
+            required
+          />
         </div>
-        <button type="submit" class="btn btn-primary">Sign In</button>
-        <small
-          >Don't have an account? <a href="./signup.html">Sign up</a></small
-        >
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder="Last name"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phoneNumber"
+            placeholder="Enter your phone number"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Booking</button>
       </form>
+    </div>
+
+    <div
+      class="modal fade"
+      id="termsModal"
+      tabindex="-1"
+      aria-labelledby="termsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="termsModalLabel">Terms and Policy</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>1. Booking Confirmation:</strong></p>
+            <p>
+              Your booking will only be confirmed upon successful payment and
+              receipt of a confirmation email. Tickets are issued
+              electronically; no physical tickets will be provided.
+            </p>
+
+            <p><strong>2. Cancellations and Refunds:</strong></p>
+            <ul>
+              <li>
+                Tickets canceled within 24 hours of the booking are eligible for
+                a full refund, minus service fees.
+              </li>
+              <li>
+                Cancellation requests must be made through your account or by
+                contacting customer support.
+              </li>
+              <li>
+                No refunds will be issued for cancellations made less than 2
+                hours before the scheduled departure.
+              </li>
+            </ul>
+
+            <p><strong>3. Changes to Booking:</strong></p>
+            <p>
+              Changes to booking details (e.g., name, date, time) can be made up
+              to 6 hours before departure, subject to availability. A small
+              administrative fee may apply for any changes.
+            </p>
+
+            <p><strong>4. Travel Requirements:</strong></p>
+            <p>
+              Passengers must arrive at the boarding point at least 30 minutes
+              before the departure time. Valid identification may be required
+              for verification before boarding.
+            </p>
+
+            <p><strong>5. Liability and Delays:</strong></p>
+            <p>
+              The bus company is not liable for delays caused by unforeseen
+              circumstances such as traffic, weather, or mechanical issues. In
+              the event of cancellation by the bus company, you will be entitled
+              to a full refund or a rescheduled trip.
+            </p>
+
+            <p><strong>6. Passenger Responsibilities:</strong></p>
+            <p>
+              Passengers are responsible for safeguarding their belongings
+              during the journey. Prohibited items, including hazardous
+              materials, are not allowed onboard.
+            </p>
+
+            <p><strong>7. Privacy Policy:</strong></p>
+            <p>
+              Your personal information will only be used for booking and
+              service purposes, adhering to our privacy policy. We do not share
+              your data with third parties without your consent.
+            </p>
+
+            <p><strong>8. Agreement:</strong></p>
+            <p>
+              By submitting your booking, you agree to these terms and policies.
+              Non-compliance may result in denial of service.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">
+              Agree and Proceed
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <footer class="bg-turquoise text-white">
@@ -79,12 +285,72 @@
               <li><a href="./index.html" class="text-white">Route</a></li>
               <li><a href="./contact.html" class="text-white">Contact</a></li>
               <li><a href="./signup.html" class="text-white">Sign Up</a></li>
+              <li><a href="./signin.html" class="text-white">Sign In</a></li>
             </ul>
+          </div>
+          <div class="col-md-4">
+            <h3 class="text-uppercase">Contact</h3>
+            <div class="contact-details">
+              <div class="d-flex align-items-center mb-2">
+                <img
+                  src="./assets/icons/location_on_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+                  alt=""
+                  class="me-2 icon-smaller"
+                />
+                <p class="mb-0">King George VI St, Addis Ababa, Ethiopia</p>
+              </div>
+              <div class="d-flex align-items-center mb-2">
+                <a href="tel:+25100436787" class="text-white">
+                  <img
+                    src="./assets/icons/call_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+                    alt=""
+                    class="me-2 icon-smaller"
+                  />
+                  <span class="mb-0">+251 00 43 67 87</span>
+                </a>
+              </div>
+              <div class="d-flex align-items-center mb-2">
+                <a href="mailto:TravelLink@gmail.com" class="text-white">
+                  <img
+                    src="./assets/icons/mail_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png"
+                    alt=""
+                    class="me-2 icon-smaller"
+                  />
+                  <span class="mb-0">TravelLink@gmail.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h3 class="text-uppercase">Follow Us</h3>
+            <div class="social-icons mb-3">
+              <a href="#"
+                ><img src="./assets/icons/facebook-brands-solid.svg" alt=""
+              /></a>
+              <a href="#"
+                ><img
+                  src="./assets/icons/instagram-brands-solid (1).svg"
+                  alt=""
+              /></a>
+              <a href="#"
+                ><img src="./assets/icons/linkedin-brands-solid (1).svg" alt=""
+              /></a>
+              <a href="#"
+                ><img
+                  src="./assets/icons/x-twitter-brands-solid (1).svg"
+                  alt=""
+              /></a>
+            </div>
+            <p class="caption">© 2025 TravelLink. All Rights Reserved.</p>
           </div>
         </div>
       </div>
     </footer>
-
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="./typescript/index.js"></script>
+    <script src="./typescript/admin.js"></script>
+    <script src="./typescript/profile.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
